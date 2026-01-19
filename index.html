@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استاد آسر الدولي - نسخة الكلمات الشهيرة</title>
+    <title>استاد آسر الدولي - النسخة الأسطورية</title>
     <style>
         body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
         #game-container { position: relative; border: 5px solid #444; border-radius: 15px; overflow: hidden; box-shadow: 0 0 50px rgba(46, 125, 50, 0.5); }
@@ -15,12 +15,13 @@
         .btn:hover { background: #fff; transform: scale(1.05); }
         .currency-bar { position: absolute; top: 10px; right: 20px; font-size: 20px; font-weight: bold; color: #f1c40f; z-index: 110; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; border: 1px solid #f1c40f; }
         .shop-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 10px; padding: 0 20px 50px 20px; }
-        .item { background: #222; padding: 15px; border: 2px solid #444; border-radius: 10px; width: 320px; text-align: right; direction: rtl; }
+        .item { background: #222; padding: 15px; border: 2px solid #444; border-radius: 10px; width: 340px; text-align: right; direction: rtl; }
         .item.active { border-color: #f1c40f; box-shadow: 0 0 10px #f1c40f; }
-        .manual-box { direction: rtl; padding: 30px; text-align: right; max-width: 650px; font-size: 15px; line-height: 1.8; color: #eee; }
-        .manual-section { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-bottom: 20px; border-right: 4px solid #f1c40f; }
-        .manual-section h3 { color: #f1c40f; margin-top: 0; border-bottom: 1px solid #444; padding-bottom: 5px; }
+        .manual-box { direction: rtl; padding: 30px; text-align: right; max-width: 650px; font-size: 14px; line-height: 1.8; color: #fff; }
+        .manual-section { background: rgba(255,255,255,0.07); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-right: 5px solid #f1c40f; }
+        .manual-section h3 { color: #f1c40f; margin-top: 0; border-bottom: 1px solid #555; padding-bottom: 5px; font-size: 18px; }
         #bottom-ui { width: 100%; background: #111; padding: 10px; border-top: 4px solid #f1c40f; display: flex; justify-content: space-around; font-size: 16px; font-weight: bold; }
+        b { color: #f1c40f; }
     </style>
 </head>
 <body>
@@ -29,7 +30,7 @@
 
     <div id="game-container">
         <div id="lobby">
-            <h1 style="font-size: 40px;">⚽ استاد آسر الدولي ⚽</h1>
+            <h1 style="font-size: 40px; text-shadow: 2px 2px #000;">⚽ استاد آسر الدولي ⚽</h1>
             <button class="btn" onclick="startGame(false)">مباراة عادية ⚽</button>
             <button class="btn" style="background:#e74c3c; color:white;" onclick="startGame(true)">💀 التحدي المستحيل 💀</button>
             <button class="btn" onclick="openShop()">متجر الشخصيات 🛒</button>
@@ -45,16 +46,39 @@
 
         <div id="manual" style="display: none;">
             <div class="manual-box">
-                <h1 style="color:#3498db; text-align:center;">📖 دليل استاد آسر</h1>
+                <h1 style="color:#3498db; text-align:center; text-decoration: underline;">📖 الدليل الشامل للاستاد</h1>
+                
                 <div class="manual-section">
-                    <h3>📢 الكلمات الشهيرة</h3>
-                    <p>كل لاعب له كلمة تظهر عند الهدف:</p>
-                    <p>• <b>آسر:</b> "يا عمرو دياب يا شحات"</p>
-                    <p>• <b>عفيفي:</b> "أنت دمج يسطا"</p>
-                    <p>• <b>طه:</b> "ماشي يسطا حاضر"</p>
+                    <h3>🕹️ نظام اللعب والتحكم</h3>
+                    <p>• اللعبة عبارة عن تحدي ضربات جزاء ضد <b>عمرو</b>. اضغط بالماوس (أو المس الشاشة) لتسديد الكرة.</p>
+                    <p>• لديك <b>3 قلوب ❤️</b>، إذا صد عمرو الكرة أو لم تدخل المرمى، تفقد قلباً وتسمع جملة عمرو الشهيرة.</p>
+                </div>
+
+                <div class="manual-section">
+                    <h3>💵 الاقتصاد (الكوينز والجواهر)</h3>
+                    <p>• <b>الكوينز:</b> الجول الواحد يمنحك <b>50 كوين</b> (عفيفي يمنحه 150). تُستخدم لتحويلها لجواهر.</p>
+                    <p>• <b>الجواهر:</b> هي العملة الملكية لشراء الأبطال الأقوياء من المتجر.</p>
+                    <p>• <b>الحفظ:</b> يتم حفظ رصيدك وشخصياتك تلقائياً في المتصفح، لا تقلق من إغلاق الصفحة.</p>
+                </div>
+
+                <div class="manual-section">
+                    <h3>👥 أسرار الشخصيات</h3>
+                    <p>• <b>آسر:</b> البطل الأساسي، سلاحه جملة: "يا عمرو دياب يا شحات".</p>
+                    <p>• <b>آسر البرايم:</b> أقوى شخصية، الوحيد القادر على لمس "عمرو الشبح" وهزيمته.</p>
+                    <p>• <b>الثلاثي المرعب:</b> يسجل 3 أهداف في الضربة الواحدة، ممتاز لرفع السكور بسرعة.</p>
+                    <p>• <b>أحمد عفيفي:</b> يضاعف أرباحك المالية 3 مرات (150 كوين للجول).</p>
+                    <p>• <b>نور الدين:</b> أول تسديدة له في كل مباراة هي "صاروخ مخترق" لا يمكن صده.</p>
+                    <p>• <b>طه:</b> يجمد عمرو في مكانه لمدة ثانية كاملة بمجرد الضغط للشوط.</p>
+                </div>
+
+                <div class="manual-section">
+                    <h3>👹 مراحل تطور عمرو</h3>
+                    <p>عمرو يتطور كل 3 أهداف تزيد من قوته وسرعته وحجمه:</p>
+                    <p>1. <b>أول الترم:</b> بطيء جداً | 2. <b>آخر الترم:</b> سرعة متوسطة | 3. <b>البرايم:</b> سرعة عالية وأذرع أطول | 4. <b>الترم الثاني:</b> حركة عشوائية صعبة | 5. <b>الثانوي:</b> الوحش النهائي السريع.</p>
+                    <p>• <b>عمرو الشبح:</b> يظهر فقط في "المود المستحيل"، لا يمكن لأحد تسجيل هدف فيه إلا <b>آسر البرايم</b>.</p>
                 </div>
             </div>
-            <button class="btn" onclick="closeScreens()" style="background:#e74c3c; color:white;">فهمت!</button>
+            <button class="btn" onclick="closeScreens()" style="background:#e74c3c; color:white;">فهمت كل الأسرار!</button>
         </div>
 
         <div id="game-over" style="display: none;">
@@ -66,9 +90,9 @@
         <canvas id="gameCanvas" width="750" height="450"></canvas>
 
         <div id="bottom-ui">
-            <div>🎯: <span id="score">0</span></div>
-            <div>👹: <span id="bossState">عمرو</span></div>
-            <div>👤: <span id="active-char-ui" style="color:#f1c40f">آسر</span></div>
+            <div>🎯 الأهداف: <span id="score">0</span></div>
+            <div>👹 الخصم: <span id="bossState">عمرو</span></div>
+            <div>👤 اللاعب: <span id="active-char-ui" style="color:#f1c40f">آسر</span></div>
             <div id="heartContainer">❤️❤️❤️</div>
         </div>
     </div>
@@ -77,6 +101,7 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
+        // البيانات المحفوظة
         let coins = parseInt(localStorage.getItem('coins')) || 0;
         let gems = parseInt(localStorage.getItem('gems')) || 0;
         let ownedChars = JSON.parse(localStorage.getItem('ownedChars')) || ['آسر'];
@@ -84,11 +109,11 @@
 
         const shopItems = [
             { id: 'آسر', name: 'آسر (الأصلي)', price: 0, type: 'free', ability: 'الجول بـ 50 كوين', catch: 'يا عمرو دياب يا شحات' },
-            { id: 'آسر البرايم', name: '👑 آسر البرايم', price: 25, type: 'gem', ability: 'قاهر الشبح', catch: 'يا عمرو دياب يا شحات' },
-            { id: 'بكج', name: '👹 الثلاثي المرعب', price: 150, type: 'gem', ability: 'أنمي، عمل سفلي، باكستوتا', catch: 'الثلاثي المرعب وصل!' },
-            { id: 'عفيفي', name: 'أحمد عفيفي', price: 20, type: 'gem', ability: 'فلوس x3 (150 بالجول)', catch: 'أنت دمج يسطا' },
-            { id: 'نور', name: 'نور الدين', price: 30, type: 'gem', ability: 'صاروخ مخترق', catch: 'فاموس!' },
-            { id: 'طه', name: 'طه', price: 10, type: 'gem', ability: 'تجميد الخصم', catch: 'ماشي يسطا حاضر' },
+            { id: 'آسر البرايم', name: '👑 آسر البرايم', price: 25, type: 'gem', ability: 'قاهر الشبح (ضروري للتحدي)', catch: 'يا عمرو دياب يا شحات' },
+            { id: 'بكج', name: '👹 الثلاثي المرعب', price: 150, type: 'gem', ability: '3 أهداف في ضربة واحدة', catch: 'الثلاثي المرعب وصل!' },
+            { id: 'عفيفي', name: 'أحمد عفيفي', price: 20, type: 'gem', ability: 'الجول بـ 150 كوين', catch: 'أنت دمج يسطا' },
+            { id: 'نور', name: 'نور الدين', price: 30, type: 'gem', ability: 'صاروخ مخترق لا يصد أول مرة', catch: 'فاموس!' },
+            { id: 'طه', name: 'طه', price: 10, type: 'gem', ability: 'تجميد الخصم مؤقتاً', catch: 'ماشي يسطا حاضر' },
             { id: 'بباسي', name: 'بباسي', price: -500, type: 'coin', ability: 'فخ الـ 500 كوين', catch: 'معرفتش استلم' }
         ];
 
@@ -175,7 +200,6 @@
                 ball.targetX = (e.clientX - rect.left) * (canvas.width / rect.width);
                 ball.targetY = (e.clientY - rect.top) * (canvas.height / rect.height);
                 ball.shooting = true;
-                // تجميد طه يعمل الآن بشكل أفضل
                 if (currentChar === 'طه') { frozenTimer = 60; }
             }
         });
@@ -228,12 +252,11 @@
                         coins += (currentChar === 'عفيفي' ? 150 : 50); 
                         updateCurrency();
                         
-                        // هنا التصليح: جلب الكلمة الشهيرة من المتجر وعرضها
                         let characterData = shopItems.find(c => c.id === currentChar);
                         message = characterData ? characterData.catch : "جوووو!"; 
-                        
                         messageColor = (currentChar.includes('آسر')) ? "#FFD700" : "#f1c40f"; 
                         messageTimer = 70;
+
                         if (!isImpossibleMode) {
                             let newLvl = Math.min(5, Math.floor(score/3) + 1);
                             if (newLvl > bossLevel) { bossLevel = newLvl; resetBoss(); }
