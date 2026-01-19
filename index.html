@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استاد آسر الدولي - المرجع الشامل</title>
+    <title>استاد آسر الدولي - نسخة الكلمات الشهيرة</title>
     <style>
         body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
         #game-container { position: relative; border: 5px solid #444; border-radius: 15px; overflow: hidden; box-shadow: 0 0 50px rgba(46, 125, 50, 0.5); }
@@ -45,38 +45,16 @@
 
         <div id="manual" style="display: none;">
             <div class="manual-box">
-                <h1 style="color:#3498db; text-align:center;">📖 دليل استاد آسر الرسمي</h1>
-                
+                <h1 style="color:#3498db; text-align:center;">📖 دليل استاد آسر</h1>
                 <div class="manual-section">
-                    <h3>🎮 طريقة اللعب</h3>
-                    <p>المباراة عبارة عن مواجهة ضربات جزاء ضد "عمرو". اضغط في أي مكان داخل المرمى لتسديد الكرة. هدفك هو تسجيل أكبر عدد من الأهداف قبل أن تفقد قلوبك الثلاثة ❤️.</p>
-                </div>
-
-                <div class="manual-section">
-                    <h3>👤 الأبطال والقدرات</h3>
-                    <p>• <b>آسر:</b> البطل الأساسي، عند التسجيل يقول: "يا عمرو دياب يا شحات".</p>
-                    <p>• <b>آسر البرايم:</b> النسخة الأقوى، والوحيدة التي تستطيع هزيمة عمرو الشبح.</p>
-                    <p>• <b>الثلاثي المرعب:</b> يضم (أنمي، عمل سفلي، باكستوتا) والهدف الواحد معهم يُحسب بـ 3 أهداف في النتيجة.</p>
-                    <p>• <b>أحمد عفيفي:</b> خبير المال، يمنحك 150 كوين بدلاً من 50 عند كل هدف.</p>
-                    <p>• <b>نور الدين:</b> يتميز "بالصاروخ"، أول ضربة في كل مباراة تخترق يد عمرو تلقائياً.</p>
-                    <p>• <b>طه:</b> يجمد عمرو لمدة ثانية كاملة بمجرد لمس الشاشة لتسهيل التسجيل.</p>
-                </div>
-
-                <div class="manual-section">
-                    <h3>👹 مستويات عمرو (الخصم)</h3>
-                    <p>يتطور عمرو كل 3 أهداف بالترتيب التالي:</p>
-                    <p>1. أول الترم (بطيء) ⮕ 2. آخر الترم (سريع) ⮕ 3. البرايم (ذكي) ⮕ 4. الترم الثاني (شديد) ⮕ 5. الثانوي (أسطوري).</p>
-                    <p>6. <b>عمرو الشبح:</b> موجود فقط في التحدي المستحيل، جسمه شفاف ولا تلمسه الكرة إلا من آسر البرايم.</p>
-                </div>
-
-                <div class="manual-section">
-                    <h3>💰 المتجر والعملات</h3>
-                    <p>• تسجيل هدف عادي = <b>50 كوين</b>.</p>
-                    <p>• يمكنك تحويل الكوينز لجواهر لشراء الأبطال (كل 50 كوين بـ 1 جوهرة).</p>
-                    <p>• اللعبة تحفظ تقدمك تلقائياً؛ عملاتك وشخصياتك لن تضيع أبداً.</p>
+                    <h3>📢 الكلمات الشهيرة</h3>
+                    <p>كل لاعب له كلمة تظهر عند الهدف:</p>
+                    <p>• <b>آسر:</b> "يا عمرو دياب يا شحات"</p>
+                    <p>• <b>عفيفي:</b> "أنت دمج يسطا"</p>
+                    <p>• <b>طه:</b> "ماشي يسطا حاضر"</p>
                 </div>
             </div>
-            <button class="btn" onclick="closeScreens()" style="background:#e74c3c; color:white;">فهمت، لنبدأ!</button>
+            <button class="btn" onclick="closeScreens()" style="background:#e74c3c; color:white;">فهمت!</button>
         </div>
 
         <div id="game-over" style="display: none;">
@@ -106,11 +84,11 @@
 
         const shopItems = [
             { id: 'آسر', name: 'آسر (الأصلي)', price: 0, type: 'free', ability: 'الجول بـ 50 كوين', catch: 'يا عمرو دياب يا شحات' },
-            { id: 'آسر البرايم', name: '👑 آسر البرايم', price: 25, type: 'gem', ability: 'قاهر الشبح (ضروري للتحدي)', catch: 'يا عمرو دياب يا شحات' },
+            { id: 'آسر البرايم', name: '👑 آسر البرايم', price: 25, type: 'gem', ability: 'قاهر الشبح', catch: 'يا عمرو دياب يا شحات' },
             { id: 'بكج', name: '👹 الثلاثي المرعب', price: 150, type: 'gem', ability: 'أنمي، عمل سفلي، باكستوتا', catch: 'الثلاثي المرعب وصل!' },
-            { id: 'عفيفي', name: 'أحمد عفيفي', price: 20, type: 'gem', ability: 'فلوس x3 (150 للجول)', catch: 'أنت دمج يسطا' },
-            { id: 'نور', name: 'نور الدين', price: 30, type: 'gem', ability: 'صاروخ مخترق أول مرة', catch: 'فاموس!' },
-            { id: 'طه', name: 'طه', price: 10, type: 'gem', ability: 'تجميد الخصم مؤقتاً', catch: 'ماشي يسطا حاضر' },
+            { id: 'عفيفي', name: 'أحمد عفيفي', price: 20, type: 'gem', ability: 'فلوس x3 (150 بالجول)', catch: 'أنت دمج يسطا' },
+            { id: 'نور', name: 'نور الدين', price: 30, type: 'gem', ability: 'صاروخ مخترق', catch: 'فاموس!' },
+            { id: 'طه', name: 'طه', price: 10, type: 'gem', ability: 'تجميد الخصم', catch: 'ماشي يسطا حاضر' },
             { id: 'بباسي', name: 'بباسي', price: -500, type: 'coin', ability: 'فخ الـ 500 كوين', catch: 'معرفتش استلم' }
         ];
 
@@ -197,7 +175,8 @@
                 ball.targetX = (e.clientX - rect.left) * (canvas.width / rect.width);
                 ball.targetY = (e.clientY - rect.top) * (canvas.height / rect.height);
                 ball.shooting = true;
-                if (currentChar === 'طه') { frozenTimer = 60; message = "ماشي يسطا حاضر"; messageTimer = 30; }
+                // تجميد طه يعمل الآن بشكل أفضل
+                if (currentChar === 'طه') { frozenTimer = 60; }
             }
         });
 
@@ -224,11 +203,11 @@
                 ctx.fillStyle = "#ff5722"; ctx.font = "bold 13px Arial";
                 ctx.fillText("أنمي", 375, 335); ctx.fillText("عمل سفلي", 375, 350); ctx.fillText("باكستوتا", 375, 365);
             } else {
-                ctx.fillStyle = (currentChar === 'آسر البرايم') ? "#FFD700" : "#f1c40f";
+                ctx.fillStyle = (currentChar.includes('البرايم')) ? "#FFD700" : "#f1c40f";
                 ctx.font = "bold 16px Arial"; ctx.fillText(currentChar, 375, 355);
             }
             ctx.fillStyle = "#ffdbac"; ctx.beginPath(); ctx.arc(375, 380, 15, 0, Math.PI*2); ctx.fill();
-            ctx.fillStyle = (currentChar === 'بكج' || currentChar === 'آسر البرايم') ? "#9b59b6" : "#2ecc71";
+            ctx.fillStyle = (currentChar === 'بكج' || currentChar.includes('البرايم')) ? "#9b59b6" : "#2ecc71";
             ctx.fillRect(357, 395, 36, 40);
 
             if (ball.shooting) {
@@ -248,9 +227,13 @@
                         score += (currentChar === 'بكج' ? 3 : 1);
                         coins += (currentChar === 'عفيفي' ? 150 : 50); 
                         updateCurrency();
-                        let cd = shopItems.find(c => c.id === currentChar);
-                        message = cd ? cd.catch : "جوووو!"; messageColor = (currentChar.includes('آسر')) ? "#FFD700" : "#f1c40f"; 
-                        messageTimer = 60;
+                        
+                        // هنا التصليح: جلب الكلمة الشهيرة من المتجر وعرضها
+                        let characterData = shopItems.find(c => c.id === currentChar);
+                        message = characterData ? characterData.catch : "جوووو!"; 
+                        
+                        messageColor = (currentChar.includes('آسر')) ? "#FFD700" : "#f1c40f"; 
+                        messageTimer = 70;
                         if (!isImpossibleMode) {
                             let newLvl = Math.min(5, Math.floor(score/3) + 1);
                             if (newLvl > bossLevel) { bossLevel = newLvl; resetBoss(); }
@@ -268,4 +251,3 @@
     </script>
 </body>
 </html>
-
