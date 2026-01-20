@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استاد آسر الدولي - النسخة الأسطورية (المصلحة)</title>
+    <title>استاد آسر الدولي - النسخة الختامية</title>
     <style>
         body { margin: 0; background: #000; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
         #game-container { position: relative; border: 5px solid #444; border-radius: 15px; overflow: hidden; box-shadow: 0 0 50px rgba(46, 125, 50, 0.5); }
         canvas { background: #1b5e20; display: block; }
-        #lobby, #game-over, #shop, #manual { position: absolute; inset: 0; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; text-align: center; }
+        #lobby, #game-over, #shop, #manual, #win-screen { position: absolute; inset: 0; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; text-align: center; }
         #lobby { background: radial-gradient(circle, #2e7d32, #000); }
         #shop, #manual { justify-content: flex-start; overflow-y: auto; padding: 20px 0; }
         .btn { background: #f1c40f; color: black; padding: 12px 25px; margin: 8px; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; width: 240px; transition: 0.3s; }
         .btn:hover { background: #fff; transform: scale(1.05); }
         .currency-bar { position: absolute; top: 10px; right: 20px; font-size: 20px; font-weight: bold; color: #f1c40f; z-index: 110; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; border: 1px solid #f1c40f; }
-        .shop-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 10px; padding: 0 20px 50px 20px; }
-        .item { background: #222; padding: 15px; border: 2px solid #444; border-radius: 10px; width: 340px; text-align: right; direction: rtl; }
-        .item.active { border-color: #f1c40f; box-shadow: 0 0 10px #f1c40f; }
-        .manual-box { direction: rtl; padding: 30px; text-align: right; max-width: 650px; font-size: 14px; line-height: 1.8; color: #fff; }
-        .manual-section { background: rgba(255,255,255,0.07); padding: 15px; border-radius: 12px; margin-bottom: 15px; border-right: 5px solid #f1c40f; }
-        .manual-section h3 { color: #f1c40f; margin-top: 0; border-bottom: 1px solid #555; padding-bottom: 5px; font-size: 18px; }
+        .manual-box { direction: rtl; padding: 30px; text-align: right; max-width: 650px; font-size: 14px; line-height: 1.6; color: #fff; }
+        .manual-section { background: rgba(255,255,255,0.07); padding: 12px; border-radius: 10px; margin-bottom: 10px; border-right: 5px solid #f1c40f; }
+        .manual-section h3 { color: #f1c40f; margin: 0 0 5px 0; font-size: 16px; }
         #bottom-ui { width: 100%; background: #111; padding: 10px; border-top: 4px solid #f1c40f; display: flex; justify-content: space-around; font-size: 16px; font-weight: bold; }
-        b { color: #f1c40f; }
     </style>
 </head>
 <body>
@@ -30,12 +26,46 @@
 
     <div id="game-container">
         <div id="lobby">
-            <h1 style="font-size: 40px; text-shadow: 2px 2px #000;">⚽ استاد آسر الدولي ⚽</h1>
-            <button class="btn" onclick="startGame(false)">مباراة عادية ⚽</button>
-            <button class="btn" style="background:#e74c3c; color:white;" onclick="startGame(true)">💀 التحدي المستحيل 💀</button>
+            <h1 style="font-size: 35px;">⚽ استاد آسر الدولي ⚽</h1>
+            <button class="btn" onclick="startGame(false)">مباراة عادية (15 هدف للفوز)</button>
+            <button class="btn" style="background:#e74c3c; color:white;" onclick="startGame(true)">💀 الشبح (20 هدف بآسر البرايم)</button>
             <button class="btn" onclick="openShop()">متجر الشخصيات 🛒</button>
-            <button class="btn" style="background:#2ecc71" onclick="exchangeCoins()">تحويل 50💰 لـ 1💎</button>
-            <button class="btn" style="background:#3498db; color:white;" onclick="openManual()">كتيب التعليمات 📖</button>
+            <button class="btn" style="background:#3498db; color:white;" onclick="openManual()">📖 كتيب التعليمات الشامل</button>
+        </div>
+
+        <div id="manual" style="display: none;">
+            <div class="manual-box">
+                <h2 style="color:#f1c40f; text-align:center;">📖 الدليل الكامل والنهائي</h2>
+                
+                <div class="manual-section">
+                    <h3>🏆 كيف تفوز؟</h3>
+                    <p>• <b>المباراة العادية:</b> سجل 15 هدفاً لتختم اللعبة وتطرد عمرو.</p>
+                    <p>• <b>تحدي الشبح:</b> سجل 20 هدفاً باستخدام <b>آسر البرايم</b> حصراً للفوز بالتاج الملكي.</p>
+                </div>
+
+                <div class="manual-section">
+                    <h3>👤 أبطال الاستاد وقدراتهم</h3>
+                    <p>• <b>آسر البرايم:</b> البطل الوحيد "المخترق" الذي لا يوقفه عمرو الشبح.</p>
+                    <p>• <b>الثلاثي المرعب:</b> يسجل 3 أهداف في اللمسة الواحدة (يوصلك للفوز أسرع).</p>
+                    <p>• <b>أحمد عفيفي:</b> "دمج" حقيقي، يرفع أرباحك لـ 150 كوين بدلاً من 50.</p>
+                    <p>• <b>طه:</b> بلمسة منه، يتجمد عمرو لمدة ثانية كاملة في مكانه.</p>
+                    <p>• <b>نور الدين:</b> أول كرة يشوطها في المباراة "برق خاطف" لا تصد.</p>
+                    <p>• <b>بباسي:</b> فخ! لو اشتريته هتدفع 500 كوين وهتخسر دايماً.</p>
+                </div>
+
+                <div class="manual-section">
+                    <h3>👹 وحوش المرمى (عمرو)</h3>
+                    <p>• عمرو يتطور كل 3 أهداف (يتغير لونه وحجمه وسرعته).</p>
+                    <p>• <b>عمرو الشبح:</b> شفاف وسريع جداً، يصد أي كرة إلا كرة آسر البرايم.</p>
+                </div>
+            </div>
+            <button class="btn" onclick="closeScreens()">فهمت كل شيء!</button>
+        </div>
+
+        <div id="win-screen" style="display: none;">
+            <h1 style="color:#f1c40f; font-size: 50px;">🏆 مبروك يا بطل! 🏆</h1>
+            <p id="win-msg" style="font-size: 20px;"></p>
+            <button class="btn" onclick="backToLobby()">العودة للرئيسية</button>
         </div>
 
         <div id="shop" style="display: none;">
@@ -44,21 +74,10 @@
             <button class="btn" onclick="closeScreens()" style="background:#e74c3c; color:white;">خروج</button>
         </div>
 
-        <div id="manual" style="display: none;">
-            <div class="manual-box">
-                <h1 style="color:#3498db; text-align:center; text-decoration: underline;">📖 الدليل الشامل للاستاد</h1>
-                <div class="manual-section">
-                    <h3>⚡ ميزة آسر البرايم (تم الإصلاح)</h3>
-                    <p>• <b>آسر البرايم</b> هو الوحيد الذي يمكنه تسجيل أهداف في <b>عمرو الشبح</b>. أي لاعب آخر سيصده الشبح فوراً.</p>
-                </div>
-                </div>
-            <button class="btn" onclick="closeScreens()" style="background:#e74c3c; color:white;">فهمت!</button>
-        </div>
-
         <div id="game-over" style="display: none;">
-            <h1 id="over-title">انتهت المباراة!</h1>
-            <button class="btn" onclick="retryLevel()">إعادة المحاولة 🔄</button>
-            <button class="btn" onclick="backToLobby()" style="background:#e74c3c; color:white;">اللوبي 🏠</button>
+            <h1 style="color:red;">خسرت! عمرو طردك!</h1>
+            <button class="btn" onclick="retryLevel()">حاول تاني 🔄</button>
+            <button class="btn" onclick="backToLobby()">اللوبي 🏠</button>
         </div>
 
         <canvas id="gameCanvas" width="750" height="450"></canvas>
@@ -81,26 +100,29 @@
         let currentChar = localStorage.getItem('currentChar') || 'آسر';
 
         const shopItems = [
-            { id: 'آسر', name: 'آسر (الأصلي)', price: 0, type: 'free', ability: 'الجول بـ 50 كوين', catch: 'يا عمرو دياب يا شحات' },
-            { id: 'آسر البرايم', name: '👑 آسر البرايم', price: 25, type: 'gem', ability: 'قاهر الشبح (ضروري للتحدي)', catch: 'يا عمرو دياب يا شحات' },
-            { id: 'بكج', name: '👹 الثلاثي المرعب', price: 150, type: 'gem', ability: '3 أهداف في ضربة واحدة', catch: 'الثلاثي المرعب وصل!' },
-            { id: 'عفيفي', name: 'أحمد عفيفي', price: 20, type: 'gem', ability: 'الجول بـ 150 كوين', catch: 'أنت دمج يسطا' },
-            { id: 'نور', name: 'نور الدين', price: 30, type: 'gem', ability: 'صاروخ مخترق لا يصد أول مرة', catch: 'فاموس!' },
-            { id: 'طه', name: 'طه', price: 10, type: 'gem', ability: 'تجميد الخصم مؤقتاً', catch: 'ماشي يسطا حاضر' },
-            { id: 'بباسي', name: 'بباسي', price: -500, type: 'coin', ability: 'فخ الـ 500 كوين', catch: 'معرفتش استلم' }
+            { id: 'آسر', name: 'آسر', price: 0, type: 'free', ability: '50 كوين' },
+            { id: 'آسر البرايم', name: '👑 آسر البرايم', price: 25, type: 'gem', ability: 'قاهر الشبح' },
+            { id: 'بكج', name: '👹 الثلاثي المرعب', price: 150, type: 'gem', ability: '3 أهداف بضربة' },
+            { id: 'عفيفي', name: 'أحمد عفيفي', price: 20, type: 'gem', ability: '150 كوين للجول' },
+            { id: 'نور', name: 'نور الدين', price: 30, type: 'gem', ability: 'أول شوطة برق' },
+            { id: 'طه', name: 'طه', price: 10, type: 'gem', ability: 'تجميد عمرو' },
+            { id: 'بباسي', name: 'بباسي', price: -500, type: 'coin', ability: 'فخ الكوينز' }
         ];
 
         let gameRunning = false; let score = 0; let lives = 3; let bossLevel = 1;
         let isImpossibleMode = false; let message = ""; let messageTimer = 0; 
-        let messageColor = "#f1c40f"; let firstShot = true; let frozenTimer = 0; let animationId;
+        let firstShot = true; let frozenTimer = 0; let animationId;
 
         const goal = { x: 180, y: 50, width: 390, height: 160 };
         let ball = { x: 375, y: 410, radius: 10, shooting: false, targetX: 375, targetY: 410, speed: 0.22 };
-        let amr = { x: 350, y: 130, width: 45, height: 80, armLen: 85, speed: 7, color: "#2196f3", name: "عمرو أول الترم" };
+        let amr = { x: 350, y: 130, width: 45, height: 80, armLen: 85, speed: 7, color: "#2196f3", name: "عمرو" };
 
         function saveData() { localStorage.setItem('coins', coins); localStorage.setItem('gems', gems); localStorage.setItem('ownedChars', JSON.stringify(ownedChars)); localStorage.setItem('currentChar', currentChar); }
         function updateCurrency() { document.getElementById('coins-display').innerText = coins; document.getElementById('gems-display').innerText = gems; saveData(); }
-        function exchangeCoins() { if (coins >= 50) { coins -= 50; gems += 1; updateCurrency(); } else alert("محتاج 50 كوين!"); }
+        function openShop() { document.getElementById('shop').style.display = 'flex'; renderShop(); }
+        function openManual() { document.getElementById('manual').style.display = 'flex'; }
+        function closeScreens() { document.getElementById('shop').style.display = 'none'; document.getElementById('manual').style.display = 'none'; }
+        
         function renderShop() {
             const container = document.getElementById('shop-items'); container.innerHTML = '';
             shopItems.forEach(char => {
@@ -108,35 +130,36 @@
                 const itemDiv = document.createElement('div'); itemDiv.className = `item ${isActive ? 'active' : ''}`;
                 let priceDisplay = char.price < 0 ? `+500💰` : `${char.price}${char.type==='gem'?'💎':'💰'}`;
                 let btn = isActive ? `<button class="btn" disabled>مجهز ✅</button>` : (isOwned ? `<button class="btn" style="background:#2ecc71" onclick="selectChar('${char.id}')">استخدام</button>` : `<button class="btn" onclick="buyChar('${char.id}',${char.price},'${char.type}')">شراء بـ ${priceDisplay}</button>`);
-                itemDiv.innerHTML = `<h3>${char.name}</h3><div style="color:#2ecc71; font-size:12px;">${char.ability}</div>${btn}`;
+                itemDiv.innerHTML = `<h3 style='margin:0'>${char.name}</h3><div style='color:#2ecc71; font-size:12px;'>${char.ability}</div>${btn}`;
                 container.appendChild(itemDiv);
             });
         }
-        function buyChar(id, price, type) { if (type === 'gem' && gems >= price) { gems -= price; ownedChars.push(id); } else if (type === 'coin') { coins -= price; ownedChars.push(id); } else { alert("الرصيد لا يكفي!"); return; } updateCurrency(); renderShop(); }
-        function selectChar(id) { currentChar = id; document.getElementById('active-char-ui').innerText = (id === 'بكج' ? 'الثلاثي المرعب' : id); renderShop(); saveData(); }
-        function openShop() { document.getElementById('shop').style.display = 'flex'; renderShop(); }
-        function openManual() { document.getElementById('manual').style.display = 'flex'; }
-        function closeScreens() { document.getElementById('shop').style.display = 'none'; document.getElementById('manual').style.display = 'none'; }
+
+        function buyChar(id, price, type) {
+            if (type === 'gem' && gems >= price) { gems -= price; ownedChars.push(id); }
+            else if (type === 'coin') { coins -= price; ownedChars.push(id); }
+            else { alert("رصيدك خلص!"); return; }
+            updateCurrency(); renderShop();
+        }
+
+        function selectChar(id) { currentChar = id; document.getElementById('active-char-ui').innerText = id; renderShop(); saveData(); }
 
         function startGame(impossible) {
             cancelAnimationFrame(animationId); isImpossibleMode = impossible;
             document.getElementById('lobby').style.display = 'none'; document.getElementById('game-over').style.display = 'none';
+            document.getElementById('win-screen').style.display = 'none';
             score = 0; lives = 3; bossLevel = impossible ? 6 : 1; firstShot = true; frozenTimer = 0;
             resetBall(); resetBoss(); updateUI(); gameRunning = true; animate();
         }
 
-        function backToLobby() { gameRunning = false; document.getElementById('game-over').style.display = 'none'; document.getElementById('lobby').style.display = 'flex'; }
+        function backToLobby() { gameRunning = false; document.getElementById('win-screen').style.display = 'none'; document.getElementById('game-over').style.display = 'none'; document.getElementById('lobby').style.display = 'flex'; }
         function retryLevel() { startGame(isImpossibleMode); }
         function resetBall() { ball.shooting = false; ball.x = 375; ball.y = 410; }
         function updateUI() { document.getElementById('score').innerText = score; document.getElementById('bossState').innerText = amr.name; document.getElementById('heartContainer').innerText = "❤️".repeat(lives); }
 
         function resetBoss() {
-            if (isImpossibleMode) amr = { x: 350, y: 130, width: 50, height: 90, armLen: 140, speed: 18, color: "rgba(255,255,255,0.25)", name: "👻 عمرو الشبح 👻" };
-            else if (bossLevel === 1) amr = { x: 350, y: 130, width: 45, height: 80, armLen: 85, speed: 7, color: "#2196f3", name: "عمرو أول الترم" };
-            else if (bossLevel === 2) amr = { x: 350, y: 130, width: 60, height: 95, armLen: 95, speed: 10, color: "#5d4037", name: "عمرو آخر الترم" };
-            else if (bossLevel === 3) amr = { x: 350, y: 130, width: 40, height: 85, armLen: 125, speed: 14, color: "#FFD700", name: "برايم عمرو" };
-            else if (bossLevel === 4) amr = { x: 350, y: 130, width: 55, height: 90, armLen: 130, speed: 16, color: "#e91e63", name: "عمرو الترم الثاني" };
-            else if (bossLevel === 5) amr = { x: 350, y: 130, width: 65, height: 100, armLen: 145, speed: 19, color: "#9c27b0", name: "عمرو نسخة الثانوي" };
+            if (isImpossibleMode) amr = { x: 350, y: 130, width: 50, height: 90, armLen: 140, speed: 18, color: "rgba(255,255,255,0.25)", name: "👻 عمرو الشبح" };
+            else amr = { x: 350, y: 130, width: 45 + (bossLevel*5), height: 80 + (bossLevel*2), armLen: 85 + (bossLevel*5), speed: 6 + bossLevel, color: bossLevel==5?"purple":"#2196f3", name: "عمرو ليفل " + bossLevel };
         }
 
         canvas.addEventListener('mousedown', (e) => {
@@ -144,7 +167,7 @@
                 const rect = canvas.getBoundingClientRect();
                 ball.targetX = (e.clientX - rect.left) * (canvas.width / rect.width);
                 ball.targetY = (e.clientY - rect.top) * (canvas.height / rect.height);
-                ball.shooting = true; if (currentChar === 'طه') { frozenTimer = 60; }
+                ball.shooting = true; if (currentChar === 'طه') frozenTimer = 60;
             }
         });
 
@@ -152,62 +175,49 @@
             if (!gameRunning) return;
             ctx.fillStyle = "black"; ctx.fillRect(0,0, canvas.width, canvas.height);
             ctx.fillStyle = isImpossibleMode ? "#000d1a" : "#1b5e20"; ctx.fillRect(80, 0, 590, 450);
-            ctx.strokeStyle = isImpossibleMode ? "cyan" : "white"; ctx.lineWidth = 6; ctx.strokeRect(goal.x, goal.y, goal.width, goal.height);
+            ctx.strokeStyle = isImpossibleMode ? "cyan" : "white"; ctx.lineWidth = 5; ctx.strokeRect(goal.x, goal.y, goal.width, goal.height);
 
-            if (frozenTimer > 0) frozenTimer--;
-            else {
-                let left = goal.x + amr.armLen; let right = goal.x + goal.width - amr.width - amr.armLen;
-                amr.x += amr.speed; if (amr.x < left || amr.x > right) amr.speed *= -1;
-            }
+            if (frozenTimer <= 0) {
+                amr.x += amr.speed; if (amr.x < goal.x + 60 || amr.x > goal.x + goal.width - amr.width - 60) amr.speed *= -1;
+            } else frozenTimer--;
 
-            ctx.fillStyle = amr.color; ctx.font = "bold 16px Arial"; ctx.textAlign = "center";
-            ctx.fillText(amr.name, amr.x + amr.width/2, amr.y - 30); ctx.fillRect(amr.x, amr.y+20, amr.width, amr.height-20);
-            ctx.beginPath(); ctx.arc(amr.x + amr.width/2, amr.y, 20, 0, Math.PI*2); ctx.fill();
-            ctx.fillRect(amr.x - amr.armLen, amr.y+25, amr.armLen, 14); ctx.fillRect(amr.x + amr.width, amr.y+25, amr.armLen, 14);
-
-            ctx.textAlign = "center";
-            if (currentChar === 'بكج') { ctx.fillStyle = "#ff5722"; ctx.font = "bold 13px Arial"; ctx.fillText("أنمي", 375, 335); ctx.fillText("عمل سفلي", 375, 350); ctx.fillText("باكستوتا", 375, 365); }
-            else { ctx.fillStyle = (currentChar.includes('البرايم')) ? "#FFD700" : "#f1c40f"; ctx.font = "bold 16px Arial"; ctx.fillText(currentChar, 375, 355); }
-            ctx.fillStyle = "#ffdbac"; ctx.beginPath(); ctx.arc(375, 380, 15, 0, Math.PI*2); ctx.fill();
-            ctx.fillStyle = (currentChar === 'بكج' || currentChar.includes('البرايم')) ? "#9b59b6" : "#2ecc71"; ctx.fillRect(357, 395, 36, 40);
+            ctx.fillStyle = amr.color; ctx.fillRect(amr.x, amr.y, amr.width, amr.height);
+            ctx.fillRect(amr.x - amr.armLen, amr.y + 20, amr.armLen, 10); ctx.fillRect(amr.x + amr.width, amr.y + 20, amr.armLen, 10);
 
             if (ball.shooting) {
                 ball.x += (ball.targetX - ball.x) * ball.speed; ball.y += (ball.targetY - ball.y) * ball.speed;
-                let hit = ball.x > (amr.x - amr.armLen) && ball.x < (amr.x + amr.width + amr.armLen) && ball.y < (amr.y + amr.height + 20) && ball.y > amr.y - 20;
+                let hit = ball.x > (amr.x - amr.armLen) && ball.x < (amr.x + amr.width + amr.armLen) && ball.y < (amr.y + amr.height) && ball.y > amr.y;
                 
-                // --- التعديل الأسطوري هنا ---
-                // لو المود مستحيل واللاعب آسر البرايم، الغي الـ hit تماماً (اختراق)
-                if (isImpossibleMode && currentChar === 'آسر البرايم') {
-                    hit = false;
-                } else if (isImpossibleMode && currentChar !== 'آسر البرايم' && ball.y < 250) {
-                    // لو أي حد تاني ضد الشبح، بيخسر بمجرد الكورة ما تقرب
-                    hit = true;
-                }
-
+                if (isImpossibleMode && currentChar === 'آسر البرايم') hit = false;
                 if (hit && currentChar === 'نور' && firstShot) hit = false;
-                if (currentChar === 'بباسي' && ball.y < 250) hit = true;
 
                 if (hit) {
-                    lives--; message = "ابلع، تشيزي عمتك!"; messageColor = "#00d2ff";
-                    messageTimer = 80; resetBall(); updateUI();
-                    if (lives <= 0) { gameRunning = false; saveData(); document.getElementById('game-over').style.display='flex'; }
-                } else if (ball.y <= goal.y + goal.height) {
+                    lives--; message = "ابلع!"; messageTimer = 40; resetBall(); updateUI();
+                    if (lives <= 0) { gameRunning = false; document.getElementById('game-over').style.display='flex'; }
+                } else if (ball.y < goal.y + goal.height) {
                     if (ball.x > goal.x && ball.x < goal.x + goal.width) {
-                        score += (currentChar === 'بكج' ? 3 : 1); coins += (currentChar === 'عفيفي' ? 150 : 50); updateCurrency();
-                        let characterData = shopItems.find(c => c.id === currentChar);
-                        message = characterData ? characterData.catch : "جوووو!"; 
-                        messageColor = (currentChar.includes('آسر')) ? "#FFD700" : "#f1c40f"; messageTimer = 70;
-                        if (!isImpossibleMode) { let newLvl = Math.min(5, Math.floor(score/3) + 1); if (newLvl > bossLevel) { bossLevel = newLvl; resetBoss(); } }
-                    }
-                    firstShot = false; resetBall(); updateUI();
+                        score += (currentChar === 'بكج' ? 3 : 1);
+                        coins += (currentChar === 'عفيفي' ? 150 : 50);
+                        message = "جوووووول!"; messageTimer = 40;
+                        
+                        // فحص الفوز
+                        if ((!isImpossibleMode && score >= 15) || (isImpossibleMode && score >= 20)) {
+                            gameRunning = false;
+                            document.getElementById('win-screen').style.display = 'flex';
+                            document.getElementById('win-msg').innerText = isImpossibleMode ? "هزمت عمرو الشبح بآسر البرايم!" : "طردت عمرو من الاستاد بـ 15 هدف!";
+                        }
+
+                        if (!isImpossibleMode) bossLevel = Math.min(5, Math.floor(score/3) + 1);
+                        updateCurrency(); resetBall(); resetBoss(); updateUI();
+                    } else { lives--; message = "برا المرمى!"; messageTimer = 40; resetBall(); updateUI(); }
+                    firstShot = false;
                 }
             }
             ctx.fillStyle = "white"; ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2); ctx.fill();
-            if (messageTimer > 0) { ctx.fillStyle = messageColor; ctx.font = "bold 38px Arial"; ctx.fillText(message, 375, 250); messageTimer--; }
+            if (messageTimer > 0) { ctx.fillStyle = "yellow"; ctx.font = "30px Arial"; ctx.textAlign="center"; ctx.fillText(message, 375, 250); messageTimer--; }
             animationId = requestAnimationFrame(animate);
         }
         updateCurrency();
-        document.getElementById('active-char-ui').innerText = (currentChar === 'بكج' ? 'الثلاثي المرعب' : currentChar);
     </script>
 </body>
 </html>
